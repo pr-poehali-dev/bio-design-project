@@ -37,16 +37,27 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-[#0F0B1F] flex flex-col items-center justify-center relative overflow-hidden">
-      {/* Фоновые неоновые круги */}
+      {/* Фоновые неоновые круги и дизайн-элементы */}
       <div className="absolute w-96 h-96 rounded-full bg-purple-600/10 filter blur-3xl top-1/4 -right-48 animate-pulse-slow"></div>
       <div className="absolute w-64 h-64 rounded-full bg-violet-500/10 filter blur-3xl -bottom-20 -left-20 animate-pulse-slow animation-delay-2000"></div>
       
+      {/* Декоративные элементы */}
+      <div className="absolute top-10 left-10 w-32 h-32 border border-purple-500/20 rounded-full animate-spin-slow"></div>
+      <div className="absolute bottom-10 right-10 w-20 h-20 border-2 border-purple-500/30 rounded-full animate-ping-slow"></div>
+      
+      {/* Декоративная сетка */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+      
       <div className="max-w-3xl w-full space-y-8 z-10 px-4 py-10">
         <header className="text-center mb-12">
-          <h1 className="typewriter-text text-5xl md:text-7xl font-bold tracking-tight text-white">
-            <span className="neon-text-purple">{displayText}</span>
-            <span className="cursor-blink">|</span>
-          </h1>
+          <div className="inline-block relative">
+            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-violet-600 rounded-lg blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200 animate-pulse-slow"></div>
+            <h1 className="typewriter-text text-5xl md:text-7xl font-bold tracking-tight text-white relative">
+              <span className="neon-text-purple">{displayText}</span>
+              <span className="cursor-blink">|</span>
+            </h1>
+          </div>
+          <p className="mt-4 text-purple-300 animate-fade-in">😎 Био FalsiDev 😎</p>
         </header>
 
         {/* Центральная кнопка */}
@@ -56,7 +67,7 @@ const Index = () => {
             onClick={() => handleButtonClick('main')}
           >
             <div className="z-10 flex flex-col items-center justify-center">
-              <span className="text-2xl mb-2">😎 Био 😎</span>
+              <span className="text-2xl mb-2 neon-text-purple">😎 Био 😎</span>
               <span className="text-sm opacity-70">нажми меня</span>
             </div>
             <div className="absolute inset-0 flex items-center justify-center">
@@ -76,10 +87,11 @@ const Index = () => {
                   <Button 
                     key={section}
                     variant="outline" 
-                    className="border-purple-500/50 text-white hover:bg-purple-500/20 hover:border-purple-400 transition-all"
+                    className="border-purple-500/50 text-white hover:bg-purple-500/20 hover:border-purple-400 transition-all group relative overflow-hidden"
                     onClick={() => handleButtonClick(section)}
                   >
-                    {section}
+                    <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-purple-600/30 to-violet-600/30 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <span className="relative z-10">{section}</span>
                   </Button>
                 ))}
               </div>
@@ -119,7 +131,8 @@ const Index = () => {
 
 const InfoSection = () => {
   return (
-    <Card className="bg-[#1A1F2C]/50 border-purple-500/20 backdrop-blur-sm overflow-hidden hover:shadow-purple-500/20 transition-all duration-300">
+    <Card className="bg-[#1A1F2C]/50 border-purple-500/20 backdrop-blur-sm overflow-hidden hover:shadow-purple-500/20 transition-all duration-300 group">
+      <div className="absolute h-1 w-0 bg-gradient-to-r from-purple-600 to-violet-600 group-hover:w-full transition-all duration-700"></div>
       <CardContent className="p-6">
         <h2 className="text-2xl font-semibold mb-4 text-purple-400 flex items-center">
           <Icon name="User" className="mr-2 text-purple-500" />
@@ -138,7 +151,8 @@ const InfoSection = () => {
 
 const SkillsSection = () => {
   return (
-    <Card className="bg-[#1A1F2C]/50 border-purple-500/20 backdrop-blur-sm overflow-hidden hover:shadow-purple-500/20 transition-all duration-300">
+    <Card className="bg-[#1A1F2C]/50 border-purple-500/20 backdrop-blur-sm overflow-hidden hover:shadow-purple-500/20 transition-all duration-300 group">
+      <div className="absolute h-1 w-0 bg-gradient-to-r from-purple-600 to-violet-600 group-hover:w-full transition-all duration-700"></div>
       <CardContent className="p-6">
         <h2 className="text-2xl font-semibold mb-4 text-purple-400 flex items-center">
           <Icon name="Code" className="mr-2 text-purple-500" />
@@ -155,28 +169,22 @@ const SkillsSection = () => {
 
 const ProjectsSection = () => {
   return (
-    <Card className="bg-[#1A1F2C]/50 border-purple-500/20 backdrop-blur-sm overflow-hidden hover:shadow-purple-500/20 transition-all duration-300">
+    <Card className="bg-[#1A1F2C]/50 border-purple-500/20 backdrop-blur-sm overflow-hidden hover:shadow-purple-500/20 transition-all duration-300 group">
+      <div className="absolute h-1 w-0 bg-gradient-to-r from-purple-600 to-violet-600 group-hover:w-full transition-all duration-700"></div>
       <CardContent className="p-6">
         <h2 className="text-2xl font-semibold mb-4 text-purple-400 flex items-center">
           <Icon name="Rocket" className="mr-2 text-purple-500" />
           Проекты
         </h2>
         <div className="grid gap-4">
-          <div className="bg-purple-500/10 p-3 rounded-md hover:bg-purple-500/20 transition-all">
-            <h3 className="font-medium text-white">@godzillabrawl</h3>
-            <p className="text-sm text-purple-300">Телеграм проект</p>
-          </div>
-          <div className="bg-purple-500/10 p-3 rounded-md hover:bg-purple-500/20 transition-all">
-            <h3 className="font-medium text-white">@Falsidev_brawl</h3>
-            <p className="text-sm text-purple-300">Телеграм проект</p>
-          </div>
-          <div className="bg-purple-500/10 p-3 rounded-md hover:bg-purple-500/20 transition-all">
-            <h3 className="font-medium text-white flex items-center gap-1">
-              @FalsiDev_Zip
-              <Icon name="MessageCircle" className="text-blue-400 size-4" />
-            </h3>
-            <p className="text-sm text-purple-300">ЛИЧНЫЙ ТГ 🔵👀</p>
-          </div>
+          <ProjectItem name="@godzillabrawl" description="Телеграм проект" />
+          <ProjectItem name="@Falsidev_brawl" description="Телеграм проект" />
+          <ProjectItem 
+            name="@FalsiDev_Zip" 
+            description="ЛИЧНЫЙ ТГ 🔵👀" 
+            icon="MessageCircle" 
+            iconColor="text-blue-400" 
+          />
         </div>
       </CardContent>
     </Card>
@@ -185,21 +193,22 @@ const ProjectsSection = () => {
 
 const ImportantSection = () => {
   return (
-    <Card className="bg-[#1A1F2C]/50 border-purple-500/20 backdrop-blur-sm overflow-hidden hover:shadow-purple-500/20 transition-all duration-300">
+    <Card className="bg-[#1A1F2C]/50 border-purple-500/20 backdrop-blur-sm overflow-hidden hover:shadow-purple-500/20 transition-all duration-300 group relative">
+      <div className="absolute h-1 w-0 bg-gradient-to-r from-purple-600 to-violet-600 group-hover:w-full transition-all duration-700"></div>
       <CardContent className="p-6">
         <h2 className="text-2xl font-semibold mb-4 text-purple-400 flex items-center">
           <Icon name="AlertCircle" className="mr-2 text-purple-500" />
           ‼️ ВАЖНО ЗНАТЬ ‼️
         </h2>
         <div className="grid gap-3 text-center">
-          <p className="text-green-400 font-medium">✅ Я НЕ ДОКСЕР ✅</p>
-          <p className="text-green-400 font-medium">✅ Я НЕ СВАТЕР ✅</p>
-          <p className="text-blue-400 font-medium">🙂 Я мирный 🙂</p>
+          <WarningItem text="✅ Я НЕ ДОКСЕР ✅" color="text-green-400" />
+          <WarningItem text="✅ Я НЕ СВАТЕР ✅" color="text-green-400" />
+          <WarningItem text="🙂 Я мирный 🙂" color="text-blue-400" />
           <Separator className="bg-purple-500/20 my-1" />
-          <p className="text-yellow-400 font-medium">❕ УГРОЗЫ=ЧС ❕</p>
-          <p className="text-yellow-400 font-medium">❕ СКАМ=ЧС ❕</p>
+          <WarningItem text="❕ УГРОЗЫ=ЧС ❕" color="text-yellow-400" />
+          <WarningItem text="❕ СКАМ=ЧС ❕" color="text-yellow-400" />
           <Separator className="bg-purple-500/20 my-1" />
-          <p className="text-purple-400 font-medium">🤫 ДЛЯ ДОКСЕРОВ И ТД. Я НАХОЖУСЬ ПОД ЗАЩИТОЙ! 🤫</p>
+          <WarningItem text="🤫 ДЛЯ ДОКСЕРОВ И ТД. Я НАХОЖУСЬ ПОД ЗАЩИТОЙ! 🤫" color="text-purple-400" />
         </div>
       </CardContent>
     </Card>
@@ -208,7 +217,7 @@ const ImportantSection = () => {
 
 const InfoItem = ({ label, value }) => {
   return (
-    <div className="group">
+    <div className="group hover-scale">
       <div className="flex items-center justify-between p-2 rounded-md hover:bg-purple-500/10 transition-all">
         <span className="text-sm text-purple-400">{label}</span>
         <span className="text-white">{value}</span>
@@ -218,13 +227,31 @@ const InfoItem = ({ label, value }) => {
   );
 };
 
+const ProjectItem = ({ name, description, icon, iconColor }) => {
+  return (
+    <div className="bg-purple-500/10 p-3 rounded-md hover:bg-purple-500/20 transition-all hover-scale hover:shadow-inner">
+      <h3 className="font-medium text-white flex items-center gap-1">
+        {name}
+        {icon && <Icon name={icon} className={`${iconColor || 'text-purple-400'} size-4`} />}
+      </h3>
+      <p className="text-sm text-purple-300">{description}</p>
+    </div>
+  );
+};
+
+const WarningItem = ({ text, color }) => {
+  return (
+    <p className={`${color} font-medium hover-scale transition-all`}>{text}</p>
+  );
+};
+
 const SocialButton = ({ icon, link, tooltip }) => {
   return (
     <a 
       href={link} 
       target="_blank"
       rel="noopener noreferrer"
-      className="relative rounded-full p-2 bg-purple-500/10 hover:bg-purple-500/30 transition-all hover:-translate-y-1 group"
+      className="relative rounded-full p-2 bg-purple-500/10 hover:bg-purple-500/30 transition-all hover:-translate-y-1 group hover-scale"
       title={tooltip}
     >
       <Icon name={icon} className="text-purple-400 size-5" />

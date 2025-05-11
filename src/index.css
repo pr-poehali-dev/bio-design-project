@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -161,6 +162,28 @@
     animation: pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 
+  .animate-spin-slow {
+    animation: spin 15s linear infinite;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 1s ease-in forwards;
+  }
+
+  .hover-scale {
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.03);
+  }
+
+  .bg-grid-pattern {
+    background-image: linear-gradient(to right, #8B5CF620 1px, transparent 1px),
+                      linear-gradient(to bottom, #8B5CF620 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
   @keyframes ping {
     75%, 100% {
       transform: scale(1.8);
@@ -174,6 +197,21 @@
     }
     50% {
       opacity: 0.2;
+    }
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
     }
   }
 }
