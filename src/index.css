@@ -101,31 +101,79 @@
   }
 }
 
+@layer utilities {
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+}
+
 @layer components {
-  .neon-text {
+  .neon-text-purple {
     color: #fff;
     text-shadow: 
       0 0 5px #8B5CF6,
       0 0 10px #8B5CF6,
       0 0 20px #8B5CF6,
       0 0 40px #8B5CF6;
-    animation: pulsate 2s infinite alternate;
   }
 
-  @keyframes pulsate {
-    0% {
-      text-shadow: 
-        0 0 5px #8B5CF6,
-        0 0 10px #8B5CF6,
-        0 0 20px #8B5CF6;
+  .cursor-blink {
+    display: inline-block;
+    color: #fff;
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    from, to {
+      opacity: 1;
     }
-    100% {
-      text-shadow: 
-        0 0 5px #8B5CF6,
-        0 0 10px #8B5CF6,
-        0 0 20px #8B5CF6,
-        0 0 30px #8B5CF6,
-        0 0 40px #8B5CF6;
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .central-button {
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .central-button:hover {
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+    transform: scale(1.05);
+  }
+
+  .central-button:active {
+    transform: scale(0.98);
+  }
+
+  .typewriter-text {
+    display: inline-block;
+  }
+
+  .animate-ping-slow {
+    animation: ping 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes ping {
+    75%, 100% {
+      transform: scale(1.8);
+      opacity: 0;
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 0.2;
     }
   }
 }
